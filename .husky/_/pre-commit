@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+. "${0%/*}/h"
+
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Running pre-commit hook..."
+
+# Rodar o npm run format
+npm run format
+
+# Rodar o npm lint
+npm run lint
+
+# Rodar o npm build
+npm run build
+
+# Aumentar em 1 a versão do package.json
+npm version patch
+
+
