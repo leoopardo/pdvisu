@@ -1,5 +1,8 @@
 {
-  "name": "pdvisu",
+  "name": "@leoopardo/pdvisu",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/leoopardo"
+  },
   "version": "1.0.0",
   "description": "",
   "type": "module",
