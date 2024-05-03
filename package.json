@@ -21,7 +21,8 @@
     "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "release": "npm version patch && git push && git push --tags"
+    "release": "npm version patch && git push && git push --tags",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
