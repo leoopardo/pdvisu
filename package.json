@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/leoopardo"
   },
-  "version": "1.4.8",
+  "version": "1.4.9",
   "description": "",
   "type": "module",
   "main": "dist/index.cjs.js",
