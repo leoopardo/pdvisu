@@ -1,4 +1,7 @@
-#!/usr/bin/env sh
-. ".husky/_/h"
+#!/bin/sh
 
+# Incluindo o script husky
+. "$(dirname $0)/.husky/_/husky.sh"
+
+# Executando o script npm
 npm run release
