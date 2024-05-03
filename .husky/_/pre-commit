@@ -2,6 +2,6 @@
 
 . ".husky/_/husky.sh"
 
-echo "npm version patch"
+npm version patch
 
 npx lint-staged
