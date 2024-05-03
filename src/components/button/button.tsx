@@ -1,5 +1,5 @@
 // components/button/button.tsx
-import React, { MouseEventHandler } from "react";
+import React, { MouseEventHandler, AllHTMLAttributes} from "react";
 import styled from "styled-components";
 
 export type ButtonProps = {
