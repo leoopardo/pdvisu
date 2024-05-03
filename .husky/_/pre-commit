@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
-. "${0%/*}/h"
 
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+. ".husky/_/husky.sh"
 
 npx lint-staged
