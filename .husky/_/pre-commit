@@ -1,21 +1,45 @@
-#!/usr/bin/env sh
-. "${0%/*}/h"
-
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+
+# Determine o diretório do husky.sh
+husky_dir="$(git rev-parse --show-toplevel)/.husky/"
+
+# Verifique se o husky.sh existe
+if [ -f "$husky_dir/_/husky.sh" ]; then
+  . "$husky_dir/_/husky.sh"
+else
+  echo "Error: husky.sh not found in $husky_dir"
+  exit 1
+fi
 
 echo "Running pre-commit hook..."
 
-# Rodar o npm run format
-npm run format
+# Exibir status do Git
+echo "Git Status:"
+git status
 
-# Rodar o npm lint
-npm run lint
-
-# Rodar o npm build
-npm run build
-
-# Aumentar em 1 a versão do package.json
-npm version patch
-
-
+# Executar comandos apenas uma vez
+if [ -z "$PRE_COMMIT_RAN" ]; then
+  export PRE_COMMIT_RAN=true
+  
+  # Rodar o npm run format
+  echo "Running npm run format..."
+  npm run format
+  
+  # Rodar o npm lint
+  echo "Running npm run lint..."
+  npm run lint
+  
+  # Rodar o npm build
+  echo "Running npm run build..."
+  npm run build
+  
+  # Verificar se o diretório de trabalho está limpo
+  if git diff-index --quiet HEAD --; then
+    # Aumentar em 1 a versão do package.json
+    echo "Bumping version in package.json..."
+    npm version patch
+  else
+    echo "Error: Git working directory not clean. Please commit or stash your changes."
+    exit 1
+  fi
+fi
