@@ -2,4 +2,6 @@
 
 . ".husky/_/husky.sh"
 
+npm version patch
+
 npx lint-staged
