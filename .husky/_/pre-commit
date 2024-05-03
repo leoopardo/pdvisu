@@ -3,4 +3,6 @@
 
 echo "[Husky] pre-commit"
 
+npm run release
+
 npx lint-staged
