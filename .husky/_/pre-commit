@@ -3,7 +3,6 @@
 # Incluindo o script husky
 . "$(dirname $0)/.husky/_/husky.sh"
 
-# Executando o script npm
-npx lint-staged
-
 "echo \"[Husky] pre-commit\""
+
+npx lint-staged
