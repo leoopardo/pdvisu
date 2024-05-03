@@ -1,7 +1,4 @@
 #!/usr/bin/env sh
-
-. ".husky/_/husky.sh"
+. "${0%/*}/h"
 
 npm run release
-
-npx lint-staged
