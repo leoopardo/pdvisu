@@ -23,6 +23,11 @@
     "build-storybook": "storybook build",
     "release": "npm version patch && git push && git push --tags"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm test"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -59,10 +64,5 @@
     "vite": "^5.2.11",
     "vite-plugin-dts": "^3.9.0",
     "vitest": "^1.5.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run release && git add -A ."
-    }
   }
 }
