@@ -5,3 +5,5 @@
 
 # Executando o script npm
 npx lint-staged
+
+"echo \"[Husky] pre-commit\""
