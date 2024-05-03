@@ -4,4 +4,4 @@
 . "$(dirname $0)/.husky/_/husky.sh"
 
 # Executando o script npm
-npm run release
+npx lint-staged
