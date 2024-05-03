@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
+import { devDependencies } from "./package.json";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
-import { devDependencies } from "./package.json";
 
 export default defineConfig({
   test: {

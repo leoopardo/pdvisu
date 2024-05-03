@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/leoopardo"
   },
-  "version": "1.0.1",
+  "version": "1.4.0",
   "description": "",
   "type": "module",
   "main": "dist/index.cjs.js",
@@ -14,14 +14,14 @@
   ],
   "scripts": {
     "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
-    "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
+    "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix && git add .",
     "build": "tsc && vite build",
     "test": "vitest run",
     "test-watch": "vitest",
     "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "release": "npm version patch && git push && git push --tags",
+    "release": "npm version patch --no-git-tag-version --force && git push && git push --tags",
     "prepare": "husky"
   },
   "keywords": [],
@@ -49,10 +49,12 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-storybook": "^0.8.0",
+    "eslint-plugin-unused-imports": "^3.2.0",
     "husky": "^9.0.11",
     "jsdom": "^24.0.0",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
+    "prettier-plugin-sort-imports": "^1.8.5",
     "react": "^18.3.1",
     "storybook": "^8.0.9",
     "styled-components": "^6.1.9",
