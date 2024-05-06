@@ -1,4 +1,4 @@
-# npm run test
-# npm run format
-# npm run lint
-# npm run release && git add . && git commit -m 'chore: bump version' --no-verify && git push
+npm run test
+npm run format
+npm run lint
+npm run release && git add . && git commit -m 'chore: bump version' --no-verify && git push
