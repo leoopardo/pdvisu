@@ -19,12 +19,6 @@ jobs:
       - run: npm run test
       - run: npm run build
       - run: npm version --no-commit-hooks $VERSION | git push --no-verify origin | git push --no-verify --tags
-      - run: |
-          git config --global user.name "leoopardo"
-          git config --global user.email "leo.san9@hotmail.com"
-      - run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-          npm run deploy
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
