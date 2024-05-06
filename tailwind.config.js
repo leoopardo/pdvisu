@@ -17,13 +17,31 @@ export const theme = {
   },
   extend: {
     colors: {
+      'green': {
+        '50': '#effef4',
+        '100': '#dafee6',
+        '200': '#b7fbcf',
+        '300': '#7ff6aa',
+        '400': '#40e87d',
+        '500': '#17d05b',
+        '600': '#0dac48',
+        '700': '#0e893c',
+        '800': '#116a33',
+        '900': '#10572c',
+        '950': '#023116',
+    },
+    
       border: "hsl(var(--border))",
       input: "hsl(var(--input))",
       ring: "hsl(var(--ring))",
       background: "hsl(var(--background))",
       foreground: "hsl(var(--foreground))",
+      disabled: {
+        DEFAULT: "#c9c9c9"
+      },
       primary: {
-        DEFAULT: "hsl(var(--primary))",
+        DEFAULT: "#0dac48",
+        active: "#0dac48",
         foreground: "hsl(var(--primary-foreground))",
       },
       secondary: {
