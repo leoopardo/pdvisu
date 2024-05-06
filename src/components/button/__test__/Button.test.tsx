@@ -3,7 +3,7 @@ import React from "react";
 import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../../themeProvider";
 import { ProvideTheme } from "../../ProvideTheme/provideTheme";
-import { Button } from "../button";
+import Button from "../button";
 
 describe("Button component", () => {
   it("Button should render correctly", () => {
