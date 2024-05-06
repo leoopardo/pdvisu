@@ -1,54 +1,45 @@
 // components/button/button.tsx
-import React, { MouseEventHandler } from "react";
-import styled from "styled-components";
+import React, { MouseEventHandler, ReactChild } from "react";
+import { ProvideTheme } from "../ProvideTheme/provideTheme";
+import { CustomButtom } from "./style";
 
 export type ButtonProps = {
-  text?: string;
+  children?: ReactChild;
   primary?: boolean;
   disabled?: boolean;
   size?: "small" | "medium" | "large";
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  theme?: "dark" | "light";
+  icon?: ReactChild;
+  iconPosition?: "left" | "right";
 };
 
-const StyledButton = styled.button<ButtonProps>`
-  border: 0;
-  line-height: 1;
-  font-size: 18px;
-  cursor: pointer;
-  font-weight: 700;
-  font-weight: bold;
-  border-radius: 10px;
-  display: inline-block;
-  color: ${(props) => (props.primary ? "#fff" : "#000")};
-  background-color: ${(props) => (props.primary ? "#FF5659" : "#f4c4c4")};
-  padding: ${(props) =>
-    props.size === "small"
-      ? "7px 25px 8px"
-      : props.size === "medium"
-        ? "9px 30px 11px"
-        : "14px 30px 16px"};
-`;
-
 const Button: React.FC<ButtonProps> = ({
+  children,
   size,
   primary,
   disabled,
-  text,
   onClick,
+  icon,
+  iconPosition,
   ...props
 }) => {
   return (
-    <StyledButton
-      data-testid={`button-${text}`}
-      type="button"
-      onClick={onClick}
-      primary={primary}
-      disabled={disabled}
-      size={size}
-      {...props}
-    >
-      {text}
-    </StyledButton>
+    <ProvideTheme>
+      <CustomButtom
+        data-testid={`button-${children}`}
+        type="button"
+        onClick={onClick}
+        primary={primary}
+        disabled={disabled}
+        size={size}
+        {...props}
+      >
+        {icon && iconPosition === "left" ? icon : <></>}
+        {children}
+        {icon && iconPosition !== "left" ? icon : <></>}
+      </CustomButtom>
+    </ProvideTheme>
   );
 };
 
