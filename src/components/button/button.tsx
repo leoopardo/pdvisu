@@ -1,11 +1,11 @@
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
-
 import { cn } from "@/lib/utils";
+import { Loading } from "../loading";
 
 const buttonVariants = cva(
-  "w-12/12 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 gap-2",
+  "w-12/12 inline-flex items-center justify-center align-middle whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 gap-2",
   {
     variants: {
       variant: {
@@ -31,10 +31,13 @@ const buttonVariants = cva(
       disabled: {
         true: "bg-disabled hover:bg-disabled cursor-no-drop",
       },
+      loading: {
+        true: "bg-disabled hover:bg-disabled cursor-no-drop",
+      },
     },
     defaultVariants: {
       variant: "default",
-      size: "default",
+      size: "lg",
     },
   },
 );
@@ -56,6 +59,8 @@ export interface ButtonProps
   icon?: React.ReactChild;
   iconPosition?: "left" | "right";
   disabled?: boolean;
+  loading?: boolean;
+  size?: "default" | "sm" | "lg" | "icon" | null | undefined;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -68,6 +73,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       icon,
       iconPosition,
       disabled,
+      loading,
       asChild = false,
       ...props
     },
@@ -77,14 +83,25 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         // class=""
-        className={cn(buttonVariants({ variant, size, className, disabled }))}
+        className={cn(
+          buttonVariants({ variant, size, className, disabled, loading }),
+        )}
         ref={ref}
         {...props}
         data-testid={`button-${children}`}
       >
-        {icon && iconPosition === "left" && icon}
-        {children}
-        {icon && iconPosition !== "left" && icon}
+        <div>{icon && iconPosition === "left" && !loading && icon}</div>
+
+        {icon && iconPosition === "left" && loading && <Loading size="md" />}
+        <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
+          {children}
+        </h4>
+
+        <div className="mt-0.5">
+          {icon && iconPosition !== "left" && !loading && icon}
+        </div>
+
+        {iconPosition !== "left" && loading && <Loading size="md" />}
       </Comp>
     );
   },

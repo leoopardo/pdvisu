@@ -1,1 +1,1 @@
-export { default as Icon } from "./loading";
+export { default as Loading } from "./loading";
