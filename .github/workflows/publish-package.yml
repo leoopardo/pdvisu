@@ -16,18 +16,20 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 18
-          registry-url: https://registry.npmjs.org/
+
+      - name: Set up npm registry
+        run: npm config set registry https://registry.npmjs.org/
 
       - name: Install dependencies
         run: npm install
 
-      - name: run test
+      - name: Run tests
         run: npm run test 
 
-      - name: run build
+      - name: Run build
         run: npm run build 
 
       - name: Publish to npm
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
