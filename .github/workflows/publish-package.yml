@@ -1,4 +1,4 @@
-name: publish npm
+name: publish on github
 
 on:
   push:
@@ -6,33 +6,18 @@ on:
       - main
 
 jobs:
-  publish:
+  publish-gpr:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
           node-version: 18
-
-      - name: Set up npm registry
-        run: npm config set registry https://registry.npmjs.org/
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm run test 
-
-      - name: Run build
-        run: npm run build 
-
-      - name: Log in to npm
-        run: npm config set //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
+          registry-url: https://npm.pkg.github.com/
+          scope: "@{leoopardo}"
+      - run: npm install
+      - run: npm run test
+      - run: npm run build
+      - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish to npm
-        run: npm publish --access public
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

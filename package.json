@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/leoopardo"
   },
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "Biblioteca de componentes visuais da PDV365",
   "type": "module",
   "main": "dist/index.cjs.js",
@@ -22,8 +22,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "release": "npm version patch --no-git-tag-version --force && git push && git push --tags",
-    "prepare": "husky",
-    "deploy": "npm publish --always-auth"
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "leoopardo",
