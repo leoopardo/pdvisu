@@ -19,7 +19,6 @@ const meta: Meta = {
   },
   args: {
     children: "Button",
-    text: "button",
   },
   decorators: [
     (Story) => (

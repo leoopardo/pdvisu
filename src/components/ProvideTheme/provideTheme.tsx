@@ -3,7 +3,7 @@ import { ThemeProvider as TailwindThemeProvider } from "../../themeProvider";
 import { GlobalStyle } from "../../global-styles";
 import { useTheme } from "../../themeProvider";
 import Dark from "../../theme/dark";
-import { ReactChild, useEffect } from "react";
+import { ReactChild, useEffect, useState } from "react";
 
 export const ProvideTheme = ({
   children,
@@ -13,6 +13,7 @@ export const ProvideTheme = ({
   t?: "dark" | "light";
 }) => {
   const { theme, setTheme } = useTheme();
+  const [styledTheme] = useState(Dark);
 
   useEffect(() => {
     setTheme(t || "light");
@@ -20,7 +21,7 @@ export const ProvideTheme = ({
 
   return (
     <TailwindThemeProvider defaultTheme={theme} storageKey="vite-ui-theme">
-      <ThemeProvider theme={theme === "dark" ? Dark : Dark}>
+      <ThemeProvider theme={styledTheme}>
         <GlobalStyle />
         {children}
       </ThemeProvider>

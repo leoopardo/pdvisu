@@ -22,8 +22,8 @@ const Dark = {
     },
   },
   loading: {
-    primary: "#FAFAFA",
-    secondary: "#2a2a2a",
+    primary: Default.primary[600],
+    secondary: "#EDEDED",
   },
 };
 
