@@ -27,7 +27,7 @@ export const CustomButtom: any = styled.button<{
       : size === "medium"
         ? "12px 8px"
         : "10px 8px",
-  transition: "background-color 0.3s",
+  transition: "background-color, color 0.3s",
   gap: "8px",
   display: "flex",
   justifyContent: "center",

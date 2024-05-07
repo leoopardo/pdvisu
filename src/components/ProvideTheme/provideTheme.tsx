@@ -3,6 +3,7 @@ import { ThemeProvider as TailwindThemeProvider } from "../../themeProvider";
 import { GlobalStyle } from "../../global-styles";
 import { useTheme } from "../../themeProvider";
 import Dark from "../../theme/dark";
+import Light from "../../theme/light";
 import { ReactChild, useEffect, useState } from "react";
 
 export const ProvideTheme = ({
@@ -13,10 +14,16 @@ export const ProvideTheme = ({
   t?: "dark" | "light";
 }) => {
   const { theme, setTheme } = useTheme();
-  const [styledTheme] = useState(Dark);
+  const [styledTheme, setStyledTheme] = useState(Light);
 
   useEffect(() => {
     setTheme(t || "light");
+    if (t === "dark") {
+      setStyledTheme(Dark);
+    }
+    if (t === "light") {
+      setStyledTheme(Light);
+    }
   }, [t]);
 
   return (
