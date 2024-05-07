@@ -15,6 +15,8 @@ jobs:
           node-version: "20.11"
           registry-url: "https://registry.npmjs.org:_authToken=${{ secrets.NPM_TOKEN }}"
           scope: "@{leoopardo}"
+      - run: git config --global user.name "leoopardo"
+          git config --global user.email "leo.san9@hotmail.com"
       - run: npm install
       - run: npm run test
       - run: npm run build
