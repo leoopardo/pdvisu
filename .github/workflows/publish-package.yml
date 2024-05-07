@@ -13,11 +13,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "20.11"
+          registry-url: "https://registry.npmjs.org:_authToken=${{ secrets.NPM_TOKEN }}"
           scope: "@{leoopardo}"
       - run: npm install
       - run: npm run test
       - run: npm run build
       - run: npm version --no-commit-hooks $VERSION | git push --no-verify origin | git push --no-verify --tags
-      - run:
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-          npm run deploy
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
