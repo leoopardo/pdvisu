@@ -14,7 +14,7 @@ export const ProvideTheme = ({
   t?: "dark" | "light";
 }) => {
   const { theme, setTheme } = useTheme();
-  const [styledTheme, setStyledTheme] = useState(Light);
+  const [styledTheme, setStyledTheme] = useState<any>(Light);
 
   useEffect(() => {
     setTheme(t || "light");

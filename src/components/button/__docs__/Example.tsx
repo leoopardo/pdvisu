@@ -11,6 +11,8 @@ const Example: FC<ButtonProps> = ({
   iconPosition,
   loading,
   size,
+  danger,
+  shape,
 }) => {
   return (
     <ProvideTheme t={theme}>
@@ -24,6 +26,8 @@ const Example: FC<ButtonProps> = ({
           iconPosition={iconPosition}
           loading={loading}
           size={size}
+          danger={danger}
+          shape={shape}
         >
           {children}
         </Button>

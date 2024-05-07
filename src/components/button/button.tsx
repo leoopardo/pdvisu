@@ -5,7 +5,8 @@ import { CustomButtom } from "./style";
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactChild;
-  variant?: "primary" | "secondary" | "outline" | "Link";
+  variant?: "primary" | "secondary" | "outline";
+  shape?: "default" | "round";
   disabled?: boolean;
   size?: "small" | "medium" | "large";
   onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -13,18 +14,17 @@ export interface ButtonProps
   icon?: ReactChild;
   iconPosition?: "left" | "right";
   loading?: boolean;
+  danger?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      variant,
-      size,
       icon,
       iconPosition,
-      disabled,
       loading,
+
       ...props
     },
     ref,
@@ -32,22 +32,27 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <CustomButtom
         data-testid={`button-${children}`}
-        variant={variant}
         type="button"
-        disabled={disabled}
-        size={size}
         ref={ref}
         {...props}
       >
         {icon && iconPosition === "left" && !loading ? icon : <></>}
         {icon && iconPosition === "left" && loading ? (
-          <Loading size="medium" />
+          <Loading
+            size="medium"
+            variant={props.variant}
+            danger={props.danger}
+          />
         ) : (
           <></>
         )}
         {children}
         {icon && iconPosition !== "left" && loading ? (
-          <Loading size="medium" />
+          <Loading
+            size="medium"
+            variant={props.variant}
+            danger={props.danger}
+          />
         ) : (
           <></>
         )}
