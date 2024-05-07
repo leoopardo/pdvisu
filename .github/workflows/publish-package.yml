@@ -1,4 +1,4 @@
-name: publish on github
+name: publish npm
 
 on:
   push:
@@ -6,22 +6,28 @@ on:
       - main
 
 jobs:
-  publish-gpr:
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "20.11"
-      - run: npm install
-      - run: npm run test
-      - run: npm run build
-      - name: Set git user
-        run: |
-          git config --global user.name "leoopardo"
-          git config --global user.email "leo.san9@hotmail.com"
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: npm publish
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-          npm run deploy
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: run test
+        run: npm run test 
+
+      - name: run build
+        run: npm run build 
+
+      - name: Publish to npm
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
