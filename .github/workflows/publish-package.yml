@@ -6,21 +6,16 @@ on:
       - main
 
 jobs:
-  publish-gpr:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
         with:
-          node-version: "20.11"
-          registry-url: "https://registry.npmjs.org:_authToken=${{ secrets.NPM_TOKEN }}"
-          scope: "@{leoopardo}"
-      - run: git config --global user.name "leoopardo"
-          git config --global user.email "leo.san9@hotmail.com"
-      - run: npm install
-      - run: npm run test
-      - run: npm run build
-      - run: npm version --no-commit-hooks $VERSION | git push --no-verify origin | git push --no-verify --tags
-      - run: npm publish
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm ci
+      - run: npm publish --provenance --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
