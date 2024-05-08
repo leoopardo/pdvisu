@@ -6,6 +6,7 @@ const Light = {
     elevated: "#343434",
     medium: "#303030",
   },
+  outline: "#4f4f4f",
   text: {
     button: "#1c1c1c",
     primary: "#1c1c1c",

@@ -16,7 +16,7 @@ const Example: FC<ButtonProps> = ({
 }) => {
   return (
     <ProvideTheme t={theme}>
-      <div className="flex w-2/12">
+      <div className="flex w-3/12">
         <Button
           style={{ width: "100%" }}
           theme={theme}

@@ -1,12 +1,12 @@
 import { ProvideTheme } from "../../ProvideTheme/provideTheme";
 import React, { FC } from "react";
-import Loading, { LoadingProps } from "../loading";
+import Logo, { LogoProps } from "../logo";
 
-const Example: FC<LoadingProps> = ({ theme, ...props }) => {
+const Example: FC<LogoProps> = ({ theme, variant, ...props }) => {
   return (
     <ProvideTheme t={theme}>
       <div className="flex justify-center align-middle w-12/12">
-        <Loading {...props} />
+        <Logo variant={variant} {...props} />
       </div>
     </ProvideTheme>
   );
