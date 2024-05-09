@@ -9,7 +9,7 @@ const Light = {
   outline: "#4f4f4f",
   text: {
     button: "#1c1c1c",
-    primary: "#1c1c1c",
+    primary: "#ffffff",
     secondary: "#ffffff",
     grey: "#A0A0A0",
   },

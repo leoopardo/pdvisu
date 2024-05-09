@@ -10,7 +10,7 @@ export const ProvideTheme = ({
   children,
   t,
 }: {
-  children: ReactChild;
+  children: ReactChild | string | any;
   t?: "dark" | "light";
 }) => {
   const { theme, setTheme } = useTheme();

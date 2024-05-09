@@ -1,8 +1,9 @@
-import { FC } from "react";
+import { CSSProperties, FC } from "react";
 
 export interface LogoProps {
   variant?: "light" | "dark";
   theme?: "light" | "dark";
+  style?: CSSProperties;
 }
 
 const Logo: FC<LogoProps> = ({ variant, theme, ...props }) => {
