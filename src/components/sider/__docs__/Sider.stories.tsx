@@ -21,14 +21,12 @@ const meta: Meta = {
         key: "dashboard",
         label: "Dashboard",
         icon: <Icon name="HomeIcon" />,
-        path: "/dashboard",
         disabled: true,
       },
       {
         key: "franquias",
         label: "Franquias",
         icon: <Icon name="BuildingStorefrontIcon" />,
-        path: "/Franquias",
       },
       {
         key: "terminais",
@@ -38,7 +36,10 @@ const meta: Meta = {
           {
             key: "geral",
             label: "Geral",
-            path: "/terminais/geral",
+          },
+          {
+            key: "pending",
+            label: "Pendentes",
           },
         ],
       },
@@ -50,7 +51,6 @@ const meta: Meta = {
           {
             key: "user-geral",
             label: "Geral",
-            path: "/usuarios/geral",
           },
         ],
       },

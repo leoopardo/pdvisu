@@ -1,5 +1,5 @@
 /// <reference types="react" />
-type Theme = "dark" | "light" | "system";
+type Theme = "dark" | "light";
 type ThemeProviderProps = {
   children: React.ReactNode;
   defaultTheme?: Theme;

@@ -16,9 +16,9 @@ export const CustomButtom: any = styled.button<{
   const constant: BaseObject = {
     border: 0,
     lineHeight: 1,
-    fontSize: "18px",
+    fontSize: "16px",
     cursor: "pointer",
-    fontWeight: "700",
+    fontWeight: "600",
     borderRadius: shape === "round" ? "50px" : "10px",
     width: "fit-content",
     height: "fit-content",

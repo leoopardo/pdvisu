@@ -16,16 +16,19 @@ export type Route = {
   open?: boolean;
   disabled?: boolean;
   childrens?: Route[];
+  level?: number;
 };
 export interface SiderProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: ReactChild | string | any;
   open?: boolean;
   routes?: Array<Route>;
+  footer?: ReactChild | any;
 }
 declare const Sider: ({
   children,
   open,
   routes,
+  footer,
   ...props
 }: SiderProps) => import("react/jsx-runtime").JSX.Element;
 export default Sider;

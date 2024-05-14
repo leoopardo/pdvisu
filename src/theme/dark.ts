@@ -1,14 +1,26 @@
 import Default from "./default.json";
 
-const Dark = {
+const Light = {
+  primary: Default.primary,
   background: {
     primary: "#1c1c1c",
-    elevated: "#343434",
+    elevated: "#232323",
     medium: "#303030",
   },
+  sider: {
+    background: {
+      0: "rgb(35, 35, 35)",
+      1: "rgb(35, 35, 35)",
+      2: "rgb(40, 40, 40)",
+      3: "rgb(45, 45, 45)",
+      4: "rgb(50, 50, 50)",
+      5: "rgb(55, 55, 55)",
+    },
+  },
+  outline: "#4f4f4f",
   text: {
     button: "#1c1c1c",
-    primary: "#1c1c1c",
+    primary: "#ffffff",
     secondary: "#ffffff",
     grey: "#A0A0A0",
   },
@@ -65,4 +77,4 @@ const Dark = {
   },
 };
 
-export default Dark;
+export default Light;

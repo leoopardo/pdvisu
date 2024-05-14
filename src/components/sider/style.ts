@@ -30,6 +30,25 @@ export const StyledOpenMenuIcon: any = styled.div<any>(({ theme, open }) => ({
   },
 }));
 
+export const StyledOpenSubmenuIcon: any = styled.div<any>(
+  ({ theme, open }) => ({
+    color: theme.text.primary,
+    backgroundColor: "transparent",
+    animationFillMode: "forwards",
+    animationDuration: "0.3s",
+    animationName: open === true ? "menuArrowOpen" : "menuArrowClose",
+
+    "@Keyframes subMenuArrowOpen": {
+      from: { rotate: "0deg" },
+      to: { rotate: "180deg" },
+    },
+    "@Keyframes subMenuArrowClose": {
+      from: { rotate: "180deg" },
+      to: { rotate: "0deg" },
+    },
+  }),
+);
+
 export const StyledSider: any = styled.div<SiderProps>(({ theme, open }) => ({
   width: "255px",
   height: "500px",
@@ -39,7 +58,9 @@ export const StyledSider: any = styled.div<SiderProps>(({ theme, open }) => ({
   animationDuration: "0.5s",
   padding: 8,
   paddingTop: 16,
-  justifyContent: open ? "flex-start" : "center",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
   [dynamicBreakpoint("md")]: {
     display: !open ? "none" : undefined,
     flexDirection: "row",
@@ -66,10 +87,18 @@ export const StyledSider: any = styled.div<SiderProps>(({ theme, open }) => ({
 }));
 
 export const StyledSiderLink: any = styled.a<Route>(
-  ({ theme, open, disabled }) => ({
-    color: disabled ? theme.text.grey : theme.text.primary,
-    backgroundColor: "transparent",
-    maxWidth: "100%",
+  ({ theme, open, disabled, level, active }) => ({
+    color: active
+      ? theme.primary["500"]
+      : disabled
+        ? theme.text.grey
+        : theme.text.primary,
+    backgroundColor: theme.sider.background[level ? level : 0],
+    maxWidth: "105%",
+    width:
+      level && level > 1
+        ? `calc(103% - (${level * 12}px))`
+        : "calc(100% + 6px)",
     overflow: "hidden",
     textOverflow: "ellipsis",
     display: "flex",
@@ -79,13 +108,16 @@ export const StyledSiderLink: any = styled.a<Route>(
     animationFillMode: "forwards",
     animationDuration: "0.5s",
     padding: 12,
-    borderRadius: 10,
-    transition: "background-color 0.3s",
+    borderRadius: level && level > 1 ? 0 : 10,
+    marginLeft: level && level > 1 ? 12 * level : undefined,
+    borderLeft:
+      level && level > 1 ? `3px solid ${theme.primary[600]}` : undefined,
+    transition: "background-color 0.3s, color 0.3s",
     cursor: disabled ? "no-drop" : "pointer",
-    justifyContent: open ? "flex-start" : "center",
+    justifyContent: open ? "space-between" : "center",
 
     "&:hover": {
-      backgroundColor: theme.button.outline.background.hover,
+      backgroundColor: theme.primary[50],
     },
   }),
 );
@@ -93,12 +125,19 @@ export const StyledSiderLink: any = styled.a<Route>(
 export const StyledLabel: any = styled.p<{
   open?: boolean;
   disabled?: boolean;
-}>(({ theme, open, disabled }) => ({
+  active?: boolean;
+}>(({ theme, open, disabled, active }) => ({
   display: open === false ? "none" : "flex",
-  color: disabled ? theme.text.grey : theme.text.primary,
+  color: active
+    ? theme.primary["500"]
+    : disabled
+      ? theme.text.grey
+      : theme.text.primary,
   animationName: open !== false ? "unFadeLink" : "",
   animationFillMode: "forwards",
   animationDuration: "1s",
+  transition: "color 0.3s",
+  gap: 6,
 
   "@Keyframes unFadeLink": {
     from: {
