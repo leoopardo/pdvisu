@@ -6,7 +6,14 @@ import React, {
   useState,
 } from "react";
 import Logo from "../logo/logo";
-import { StyledLabel, StyledSider, StyledSiderLink } from "./style";
+import {
+  StyledLabel,
+  StyledOpenMenuButton,
+  StyledOpenMenuIcon,
+  StyledSider,
+  StyledSiderLink,
+} from "./style";
+import { Icon } from "../icons";
 
 export type Route = {
   key: string;
@@ -28,16 +35,18 @@ export interface SiderProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Sider = ({ children, open, routes, ...props }: SiderProps) => {
-  const [openByClick] = useState<boolean | undefined>(undefined);
+  const [openByClick, setOpenByClick] = useState<boolean | undefined>(
+    open === true || open === false ? open : true,
+  );
   const [showLabel, setShowLabel] = useState<boolean>(true);
 
   useEffect(() => {
-    if (open === false) {
+    if (openByClick === false) {
       setShowLabel(false);
       return;
     }
     setTimeout(() => setShowLabel(true), 150);
-  }, [open]);
+  }, [openByClick, open]);
 
   const [submenuOpenStates, setSubmenuOpenStates] = useState<{
     [key: string]: boolean;
@@ -90,13 +99,32 @@ const Sider = ({ children, open, routes, ...props }: SiderProps) => {
   };
 
   return (
-    <StyledSider {...props} open={openByClick || open}>
-      <Logo variant="dark" style={{ paddingLeft: !open ? undefined : 15 }} />
-      <div style={{ marginTop: 24 }}>
-        {routes && renderMenuItems(routes, 1, false)}
-        {children}
-      </div>
-    </StyledSider>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "flex-start",
+      }}
+    >
+      <StyledSider {...props} open={openByClick || false}>
+        <Logo
+          variant="dark"
+          style={{ paddingLeft: !openByClick ? undefined : 15 }}
+        />
+        <div style={{ marginTop: 24 }}>
+          {routes && renderMenuItems(routes, 1, false)}
+          {children}
+        </div>
+      </StyledSider>
+      <StyledOpenMenuButton
+        open={openByClick || false}
+        onClick={() => setOpenByClick((state) => !state)}
+      >
+        <StyledOpenMenuIcon open={openByClick || false}>
+          <Icon name="ChevronDoubleLeftIcon" />
+        </StyledOpenMenuIcon>
+      </StyledOpenMenuButton>
+    </div>
   );
 };
 

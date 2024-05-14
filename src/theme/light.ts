@@ -3,7 +3,7 @@ import Default from "./default.json";
 const Light = {
   background: {
     primary: "#1c1c1c",
-    elevated: "#343434",
+    elevated: "#232323",
     medium: "#303030",
   },
   outline: "#4f4f4f",

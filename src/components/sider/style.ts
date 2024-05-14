@@ -1,29 +1,63 @@
 import styled from "styled-components";
 import { Route, SiderProps } from "./sider";
+import { dynamicBreakpoint } from "@/utils/breakpoints";
+
+export const StyledOpenMenuButton: any = styled.button<any>(
+  ({ theme, open }) => ({
+    margin: 8,
+    marginTop: 16,
+    color: theme.text.primary,
+    backgroundColor: "transparent",
+    [dynamicBreakpoint("md")]: {
+      marginTop: open ? 24 : 16,
+    },
+  }),
+);
+export const StyledOpenMenuIcon: any = styled.div<any>(({ theme, open }) => ({
+  color: theme.text.primary,
+  backgroundColor: "transparent",
+  animationFillMode: "forwards",
+  animationDuration: "0.3s",
+  animationName: open === true ? "menuArrowClose" : "menuArrowOpen",
+
+  "@Keyframes menuArrowOpen": {
+    from: { rotate: "0deg" },
+    to: { rotate: "180deg" },
+  },
+  "@Keyframes menuArrowClose": {
+    from: { rotate: "180deg" },
+    to: { rotate: "0deg" },
+  },
+}));
 
 export const StyledSider: any = styled.div<SiderProps>(({ theme, open }) => ({
   width: "255px",
   height: "500px",
-  backgroundColor: theme.background.primary,
+  backgroundColor: theme.background.elevated,
   animationName: open === true ? "open" : open === false ? "close" : "",
   animationFillMode: "forwards",
   animationDuration: "0.5s",
-  borderRight: `2px solid ${theme.outline}`,
   padding: 8,
   paddingTop: 16,
   justifyContent: open ? "flex-start" : "center",
+  [dynamicBreakpoint("md")]: {
+    display: !open ? "none" : undefined,
+    flexDirection: "row",
+    position: "absolute",
+    paddingLeft: 24,
+  },
 
   "@keyframes open": {
     from: {
       width: "80px",
     },
     to: {
-      width: "220px",
+      width: "255px",
     },
   },
   "@keyframes close": {
     from: {
-      width: "220px",
+      width: "255px",
     },
     to: {
       width: "80px",
@@ -39,7 +73,7 @@ export const StyledSiderLink: any = styled.a<Route>(
     overflow: "hidden",
     textOverflow: "ellipsis",
     display: "flex",
-    fontSize: "18px",
+    fontSize: "16px",
     whiteSpace: "nowrap",
     gap: 8,
     animationFillMode: "forwards",
