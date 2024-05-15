@@ -8,6 +8,7 @@ import React, {
 import { Icon } from "../icons";
 import Logo from "../logo/logo";
 import {
+  StyledFooter,
   StyledLabel,
   StyledOpenMenuButton,
   StyledOpenMenuIcon,
@@ -34,8 +35,10 @@ export type Route = {
 export interface SiderProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: ReactChild | string | any;
   open?: boolean;
+  setOpen?: Dispatch<SetStateAction<boolean>>;
   routes?: Array<Route>;
   footer?: ReactChild | any;
+  theme?: "dark" | "light";
 }
 
 const Sider = ({ children, open, routes, footer, ...props }: SiderProps) => {
@@ -156,8 +159,11 @@ const Sider = ({ children, open, routes, footer, ...props }: SiderProps) => {
       <StyledSider {...props} open={openByClick || false}>
         <div>
           <Logo
-            variant={theme === "light" ? "light" : "dark"}
-            style={{ paddingLeft: !openByClick ? undefined : 15 }}
+            style={{
+              paddingLeft: !openByClick ? undefined : 15,
+              margin: 0,
+              maxWidth: 128,
+            }}
           />
           <div style={{ marginTop: 24 }}>
             {routes && renderMenuItems(routes, 1, false, "")}
@@ -165,7 +171,7 @@ const Sider = ({ children, open, routes, footer, ...props }: SiderProps) => {
           </div>
         </div>
 
-        {footer && <div style={{ width: "100%" }}>{footer}</div>}
+        {footer && <StyledFooter>{footer}</StyledFooter>}
       </StyledSider>
       <StyledOpenMenuButton
         open={openByClick || false}

@@ -3,16 +3,19 @@ import React, { FC } from "react";
 import Sider, { SiderProps } from "../sider";
 import Layout from "../../layout/layout";
 import { Button } from "../../button";
+import Typography from "../../typography/typography";
 
-const Example: FC<SiderProps> = ({ ...props }) => {
+const Example: FC<SiderProps> = ({ theme, ...props }) => {
   return (
-    <ProvideTheme t="light">
+    <ProvideTheme t={theme}>
       <Layout style={{ display: "flex", flexDirection: "row" }}>
         <Sider
           footer={<Button style={{ width: "100%" }}>Sair</Button>}
           {...props}
         />
-        <h1 style={{ color: "#000", padding: 13 }}>Conteúdo da pagina</h1>
+        <Layout style={{ padding: 8 }}>
+          <Typography level="h3">Conteúdo da página</Typography>
+        </Layout>
       </Layout>
     </ProvideTheme>
   );

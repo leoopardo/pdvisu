@@ -86,6 +86,17 @@ export const StyledSider: any = styled.div<SiderProps>(({ theme, open }) => ({
   },
 }));
 
+export const StyledFooter: any = styled.div<any>(() => ({
+  width: "100%",
+
+  [dynamicBreakpoint("md")]: {
+    position: "absolute",
+    bottom: 8,
+    left: 8,
+    width: "95%",
+  },
+}));
+
 export const StyledSiderLink: any = styled.a<Route>(
   ({ theme, open, disabled, level, active }) => ({
     color: active

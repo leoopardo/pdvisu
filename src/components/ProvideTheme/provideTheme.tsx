@@ -13,7 +13,7 @@ export const ProvideTheme = ({
   children: ReactChild | string | any;
   t?: "dark" | "light";
 }) => {
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
   const [styledTheme, setStyledTheme] = useState<any>(Light);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export const ProvideTheme = ({
   }, [t]);
 
   return (
-    <TailwindThemeProvider defaultTheme={theme} storageKey="vite-ui-theme">
+    <TailwindThemeProvider>
       <ThemeProvider theme={styledTheme}>
         <GlobalStyle />
         {children}

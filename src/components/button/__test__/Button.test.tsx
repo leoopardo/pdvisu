@@ -8,11 +8,9 @@ import Button from "../button";
 describe("Button component", () => {
   it("Button should render correctly", () => {
     render(
-      <ThemeProvider defaultTheme={"dark"}>
-        <ProvideTheme>
-          <Button variant="default" size="default">
-            teste
-          </Button>
+      <ThemeProvider>
+        <ProvideTheme t="light">
+          <Button variant="primary">teste</Button>
         </ProvideTheme>
       </ThemeProvider>,
     );

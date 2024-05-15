@@ -67,7 +67,7 @@ const Light = {
     },
   },
   loading: {
-    secondary: { fixed: "transparent", spin: "#f5f5f5" }, // Cores de carregamento ajustadas para tons de cinza claro
+    secondary: { fixed: "transparent", spin: "#000" }, // Cores de carregamento ajustadas para tons de cinza claro
     primary: { fixed: "transparent", spin: "#ffffff" },
     outline: {
       fixed: "transparent",
