@@ -66,6 +66,13 @@ const Light = {
       ["stroke-danger"]: Default.danger[200],
     },
   },
+  input: {
+    outline: {
+      initial: "#d1d1d1",
+      active: Default.primary["500"],
+      error: Default.danger["500"],
+    },
+  },
   loading: {
     secondary: { fixed: "transparent", spin: "rgb(237, 237, 237, 0.8)" },
     primary: { fixed: "transparent", spin: "rgb(28, 28, 28, 0.8)" },

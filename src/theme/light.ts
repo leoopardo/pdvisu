@@ -66,6 +66,13 @@ const Light = {
       ["stroke-danger"]: Default.danger[200],
     },
   },
+  input: {
+    outline: {
+      initial: "#d1d1d1",
+      active: Default.primary["500"],
+      error: Default.danger["400"],
+    },
+  },
   loading: {
     secondary: { fixed: "transparent", spin: "#000" }, // Cores de carregamento ajustadas para tons de cinza claro
     primary: { fixed: "transparent", spin: "#ffffff" },

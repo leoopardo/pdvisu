@@ -303,9 +303,17 @@ export interface IconProps extends HTMLAttributes<HTMLDivElement> {
   size?: "small" | "medium" | "large";
   className?: string;
   theme?: "light" | "dark";
+  onClick?: () => void;
 }
 
-const Icon: FC<IconProps> = ({ name, style, size, className, ...rest }) => {
+const Icon: FC<IconProps> = ({
+  name,
+  style,
+  size,
+  className,
+  onClick,
+  ...rest
+}) => {
   const IconComponent = Icons[name];
 
   // Filtrar propriedades de evento incompatíveis
@@ -324,6 +332,7 @@ const Icon: FC<IconProps> = ({ name, style, size, className, ...rest }) => {
         width: size === "small" ? "16px" : size === "medium" ? "18px" : "20px",
       }}
       {...filteredProps}
+      onClick={onClick}
     />
   );
 };

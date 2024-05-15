@@ -1,21 +1,19 @@
-import { Input, InputProps } from "../input";
+import Input, { InputProps } from "../input";
 import React, { FC } from "react";
+import { ProvideTheme } from "../../ProvideTheme/provideTheme";
+import { Icon } from "../../icons";
 
-const Example: FC<InputProps> = ({
-  disabled = false,
-  placeholder = "test",
-}) => {
+const Example: FC<InputProps> = ({ disabled = false, theme, ...props }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-      }}
-    >
-      <Input placeholder={placeholder} disabled={disabled} />
-    </div>
+    <ProvideTheme t={theme}>
+      <Input
+        disabled={disabled}
+        addonBefore={<Icon name="UserCircleIcon" size="large" />}
+        style={{ width: 300 }}
+        placeholder="Placeholder"
+        {...props}
+      />
+    </ProvideTheme>
   );
 };
 

@@ -11,6 +11,8 @@ const getTypographyStyles = (elementType: "h1" | "h2" | "h3" | "h4" | "p") =>
     fontWeight: strong ? 800 : 500,
     fontStyle: italic ? "italic" : "unset",
     color: theme.text.primary,
+    margin: "none",
+    padding: "none",
   }));
 
 // Agora você pode usar a função getTypographyStyles para criar componentes estilizados dinâmicos para diferentes tipos de elementos

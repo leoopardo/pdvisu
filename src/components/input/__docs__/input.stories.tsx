@@ -1,17 +1,30 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
+import React from "react";
 import Example from "./Example";
+import { InputProps } from "../input";
 
-const meta: Meta<typeof Example> = {
-  title: "Input",
+const meta: Meta = {
+  title: "Components/Input",
   component: Example,
+  argTypes: {
+    children: {
+      control: {
+        type: "text",
+      },
+    },
+  },
+  parameters: {
+    controls: { expanded: true },
+  },
+  args: {},
 };
 
 export default meta;
-type Story = StoryObj<typeof Example>;
 
-export const Default: Story = {
-  args: {
-    placeholder: "text",
-    disabled: false,
-  },
-};
+const Template: StoryFn<InputProps> = (args) => <Example {...args} />;
+
+// By passing using the Args format for exported stories, you can control the props for a component for reuse in a test
+// https://storybook.js.org/docs/react/workflows/unit-testing
+export const Default = Template.bind({});
+
+Default.args = {};
