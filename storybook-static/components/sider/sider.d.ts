@@ -21,8 +21,10 @@ export type Route = {
 export interface SiderProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: ReactChild | string | any;
   open?: boolean;
+  setOpen?: Dispatch<SetStateAction<boolean>>;
   routes?: Array<Route>;
   footer?: ReactChild | any;
+  theme?: "dark" | "light";
 }
 declare const Sider: ({
   children,

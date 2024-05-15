@@ -7,5 +7,17 @@ import { Row } from "./row";
 import { Col } from "./col";
 import { Layout } from "./layout";
 import { Logo } from "./logo";
+import { Sider } from "./sider";
 
-export { Input, Button, ProvideTheme, Icon, Loading, Row, Col, Layout, Logo };
+export {
+  Input,
+  Button,
+  ProvideTheme,
+  Icon,
+  Loading,
+  Row,
+  Col,
+  Layout,
+  Logo,
+  Sider,
+};
