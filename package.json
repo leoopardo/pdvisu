@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/leoopardo"
   },
-  "version": "1.0.38",
+  "version": "1.0.39",
   "description": "Biblioteca de componentes visuais da PDV365",
   "type": "module",
   "main": "dist/index.cjs.js",

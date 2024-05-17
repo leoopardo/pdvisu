@@ -7,6 +7,7 @@ import {
   StyledTextArea,
 } from "./style";
 import MaskPreset, { masklist } from "./utils/maskPreSet";
+import { Loading } from "../loading";
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -22,10 +23,21 @@ export interface InputProps
   textArea?: boolean;
   mask?: string;
   replacement?: string;
+  disabled?: boolean;
+  loading?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ addonBefore, addonAfter, password, type, textArea, mask, ...props }) => {
+  ({
+    addonBefore,
+    addonAfter,
+    password,
+    type,
+    textArea,
+    mask,
+    loading,
+    ...props
+  }) => {
     const [isFocused, setIsFocused] = useState(false);
     const [inputType, setInputType] = useState<"password" | "text">(
       password ? "password" : "text",
@@ -119,7 +131,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               onClick={togglePasswordVisibility}
             />
           )}
-          {addonAfter && addonAfter}
+          {addonAfter && !loading && addonAfter}
+          {loading && <Loading variant="outline" />}
         </StyledInputOutline>
       </span>
     );

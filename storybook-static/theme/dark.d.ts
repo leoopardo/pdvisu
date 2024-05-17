@@ -76,6 +76,17 @@ declare const Light: {
       "stroke-danger": string;
     };
   };
+  input: {
+    outline: {
+      initial: string;
+      active: string;
+      error: string;
+    };
+    background: {
+      initial: string;
+      disabled: string;
+    };
+  };
   loading: {
     secondary: {
       fixed: string;

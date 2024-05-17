@@ -302,6 +302,7 @@ export interface IconProps extends HTMLAttributes<HTMLDivElement> {
   size?: "small" | "medium" | "large";
   className?: string;
   theme?: "light" | "dark";
+  onClick?: () => void;
 }
 declare const Icon: FC<IconProps>;
 export default Icon;

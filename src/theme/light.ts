@@ -68,9 +68,13 @@ const Light = {
   },
   input: {
     outline: {
-      initial: "#d1d1d1",
+      initial: "#c4c4c4",
       active: Default.primary["500"],
       error: Default.danger["400"],
+    },
+    background: {
+      initial: "transparent",
+      disabled: "#d4d4d4",
     },
   },
   loading: {

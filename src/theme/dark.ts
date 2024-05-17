@@ -72,6 +72,10 @@ const Light = {
       active: Default.primary["500"],
       error: Default.danger["500"],
     },
+    background: {
+      initial: "transparent",
+      disabled: "#d4d4d4",
+    },
   },
   loading: {
     secondary: { fixed: "transparent", spin: "rgb(237, 237, 237, 0.8)" },
